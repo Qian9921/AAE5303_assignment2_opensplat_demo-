@@ -1,0 +1,6 @@
+# AAE5303 Assignment 2 - Python Dependencies
+# For running the analysis and visualization scripts
+
+numpy>=1.21.0
+matplotlib>=3.5.0
+
