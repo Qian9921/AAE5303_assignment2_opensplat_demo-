@@ -1,0 +1,125 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "aae5303-submission-metadata",
+    "title": "AAE5303 Submission Metadata",
+    "description": "Metadata template for 3D Gaussian Splatting assignment submissions",
+    
+    "student_info": {
+        "student_id": "YOUR_STUDENT_ID",
+        "student_name": "Your Full Name",
+        "email": "your.email@connect.polyu.hk",
+        "submission_date": "2024-12-17T10:00:00Z",
+        "submission_version": 1
+    },
+    
+    "environment": {
+        "os": "Linux/Windows/macOS",
+        "python_version": "3.10",
+        "pytorch_version": "2.1.2",
+        "cuda_version": "12.1 or N/A",
+        "gpu_model": "NVIDIA RTX 3090 or CPU-only",
+        "ram_gb": 32,
+        "vram_gb": 24
+    },
+    
+    "training_configuration": {
+        "framework": "OpenSplat",
+        "framework_version": "1.0",
+        "num_iterations": 30000,
+        "device": "cuda",
+        "sh_degree": 3,
+        "ssim_weight": 0.2,
+        "downscale_factor": 1.0,
+        "num_downscales": 2,
+        "resolution_schedule": 3000,
+        "refine_every": 100,
+        "warmup_length": 500,
+        "reset_alpha_every": 30,
+        "densify_grad_thresh": 0.0002,
+        "densify_size_thresh": 0.01,
+        "stop_screen_size_at": 4000,
+        "split_screen_size": 0.05,
+        "learning_rates": {
+            "means": 0.00016,
+            "scales": 0.005,
+            "quats": 0.001,
+            "features_dc": 0.0025,
+            "features_rest": 0.000125,
+            "opacities": 0.05
+        },
+        "custom_parameters": {
+            "description": "Add any custom parameters here",
+            "example_param": "value"
+        }
+    },
+    
+    "dataset": {
+        "name": "HKisland_colmap",
+        "num_images": 534,
+        "image_resolution": "original",
+        "train_test_split": "90/10",
+        "preprocessing": "None or describe any preprocessing"
+    },
+    
+    "results_summary": {
+        "final_loss": 0.15,
+        "min_loss_achieved": 0.12,
+        "num_gaussians_initial": 1441245,
+        "num_gaussians_final": 1200000,
+        "training_time_hours": 2.5,
+        "output_file_size_mb": 300.0
+    },
+    
+    "quality_metrics": {
+        "psnr_mean": 25.5,
+        "psnr_std": 2.1,
+        "ssim_mean": 0.87,
+        "ssim_std": 0.03,
+        "lpips_mean": 0.12,
+        "lpips_std": 0.02,
+        "num_test_views": 50
+    },
+    
+    "innovations": [
+        {
+            "name": "Example Innovation Name",
+            "description": "Detailed description of the innovation",
+            "implementation": "Brief description of how it was implemented",
+            "impact": "What improvement did this achieve?",
+            "code_reference": "path/to/modified/file.cpp"
+        }
+    ],
+    
+    "code_modifications": [
+        {
+            "file": "model.cpp",
+            "description": "Description of changes",
+            "lines_modified": "100-150",
+            "reason": "Why this change was made"
+        }
+    ],
+    
+    "challenges_encountered": [
+        "Description of challenge 1 and how it was resolved",
+        "Description of challenge 2 and how it was resolved"
+    ],
+    
+    "lessons_learned": [
+        "Key insight 1 from this assignment",
+        "Key insight 2 from this assignment"
+    ],
+    
+    "references": [
+        {
+            "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
+            "authors": "Kerbl et al.",
+            "venue": "SIGGRAPH 2023",
+            "url": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/"
+        }
+    ],
+    
+    "acknowledgments": "Any acknowledgments for help received",
+    
+    "notes": "Any additional notes or comments about this submission"
+}
+
