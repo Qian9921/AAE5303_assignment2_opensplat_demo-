@@ -11,9 +11,63 @@
 
 ---
 
+## 🎯 Baseline Results
+
+A **baseline implementation** is provided to help students understand the complete workflow and benchmark their results.
+
+### Baseline Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| **Dataset** | AMtown02 (1,380 images) |
+| **Training Iterations** | 300 |
+| **Downscale Factor** | 4× |
+| **Training Device** | CPU only |
+| **Training Time** | ~25 minutes |
+| **Initial Points** | 8.3M (from LiDAR merge) |
+| **Output Size** | 2.0 GB |
+
+### Baseline Performance
+
+| Metric | Value | Note |
+|--------|-------|------|
+| **Training Loss (Final)** | 0.0888 | Converged from 0.2164 |
+| **Loss Reduction** | 58.9% | Over 300 iterations |
+| **Estimated PSNR** | 20-22 dB | Approximate (requires test set evaluation) |
+| **Estimated SSIM** | 0.75-0.80 | Approximate (requires test set evaluation) |
+
+📂 **Baseline Details**: See [../baseline/README.md](../baseline/README.md) for complete implementation details, training logs, and configuration.
+
+### How to Beat the Baseline
+
+Students are encouraged to improve upon the baseline by:
+
+✅ **Training Longer**: 300 → 3,000-30,000 iterations
+- Expected improvement: +3-8 dB PSNR
+- Training time: 4-10+ hours on CPU, or 30 min - 2 hours on GPU
+
+✅ **GPU Acceleration**: 50-100× faster than CPU
+- Enables practical training for 30,000 iterations
+- Better quality in reasonable time
+
+✅ **Better Initialization**: Higher quality point cloud
+- Reduce LiDAR sampling rate (10× → 5× or 2×)
+- Use structure-from-motion if available
+
+✅ **Hyperparameter Tuning**: Optimize for your hardware
+- Adjust `densify-grad-thresh` and `refine-every`
+- Tune SSIM weight for perceptual quality
+- Experiment with learning rates
+
+✅ **Resolution Strategy**: Reduce downscaling if memory allows
+- Baseline uses 4× downscaling for memory
+- Try 2× or 1× if you have sufficient RAM/VRAM
+
+---
+
 ## 📊 Evaluation Metrics
 
-The leaderboard evaluates submissions using three standard rendering quality metrics. All metrics are computed between **rendered images** and **ground truth images**.
+The leaderboard evaluates submissions using three standard rendering quality metrics. All metrics are computed between **rendered images** and **ground truth images** on a held-out test set.
 
 ---
 
@@ -391,7 +445,7 @@ Submit a JSON file with the following format:
         "ssim": 0.8834,
         "lpips": 0.1052
     },
-    "submission_date": "2024-12-17"
+    "submission_date": "2024-12-25"
 }
 ```
 
@@ -399,6 +453,38 @@ Template file: [submission_template.json](./submission_template.json)
 
 ---
 
-## 🌐 Leaderboard Website & Baseline
+## 🌐 Leaderboard Website
 
-> **📢 The leaderboard website and baseline results will be announced later.**
+> **📢 The leaderboard submission website will be announced later.**
+>
+> Students will submit their JSON files through the web portal.
+>
+> The leaderboard will display rankings based on the three metrics, with special recognition for:
+> - 🥇 **Best PSNR**
+> - 🥈 **Best SSIM**
+> - 🥉 **Best LPIPS**
+> - 🏆 **Best Overall** (combined ranking)
+
+---
+
+## 📚 Additional Resources
+
+- **Baseline Implementation**: [../baseline/README.md](../baseline/README.md)
+- **Submission Guide**: [LEADERBOARD_SUBMISSION_GUIDE.md](./LEADERBOARD_SUBMISSION_GUIDE.md)
+- **OpenSplat Documentation**: https://github.com/pierotofy/OpenSplat
+- **UAVScenes Dataset**: https://github.com/sijieaaa/UAVScenes
+- **3D Gaussian Splatting Paper**: Kerbl et al., SIGGRAPH 2023
+
+---
+
+<div align="center">
+
+**AAE5303 - Robust Control Technology in Low-Altitude Aerial Vehicle**
+
+*Department of Aeronautical and Aviation Engineering*
+
+*The Hong Kong Polytechnic University*
+
+December 2024
+
+</div>
